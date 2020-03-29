@@ -1,25 +1,30 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { NavLink, Route } from 'react-router-dom';
+import { Container } from 'semantic-ui-react';
+import MetricList from './views/metricList/MetricList';
+import metricDetail from './views/metricDetail/metricDetail';
+
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
+    <Container>
+      <div className="ui two item menu">
+        <NavLink className="item" activeClassName="active" exact to="/">
+          Contacts List
+        </NavLink>
+        <NavLink
+          className="item"
+          activeClassName="active"
+          exact
+          to="/metric/detail"
         >
-          Learn React
-        </a>
-      </header>
-    </div>
+          Add Contact
+        </NavLink>
+      </div>
+
+      <Route exact path="/" component={MetricList} />
+      <Route path="/metric/detail" component={metricDetail} />
+    </Container>
   );
 }
 
