@@ -1,10 +1,10 @@
-import React, { Component } from 'react';
+import React from 'react';
 
 type Iprops = {
 
 }
 
-export default (props: Iprops) => {
+export default () => {
     return (
         <React.Fragment>
             <span>Metric list elem component</span>

@@ -1,30 +1,23 @@
 import React from 'react';
-import { NavLink, Route } from 'react-router-dom';
-import { Container } from 'semantic-ui-react';
-import MetricList from './views/metricList/MetricList';
+import { Route } from 'react-router-dom';
+import { Segment, Grid, Divider } from 'semantic-ui-react';
+import metricList from './views/metricList/MetricList';
 import metricDetail from './views/metricDetail/metricDetail';
+import Header from './components/header/Header';
 
 
 function App() {
   return (
-    <Container>
-      <div className="ui two item menu">
-        <NavLink className="item" activeClassName="active" exact to="/">
-          Contacts List
-        </NavLink>
-        <NavLink
-          className="item"
-          activeClassName="active"
-          exact
-          to="/metric/detail"
-        >
-          Add Contact
-        </NavLink>
-      </div>
+    <div>
+      <Header></Header>
 
-      <Route exact path="/" component={MetricList} />
-      <Route path="/metric/detail" component={metricDetail} />
-    </Container>
+      <Segment style={{ padding: '8em 0em' }} vertical>
+        <Grid container stackable verticalAlign='middle'>
+          <Route exact path="/" component={metricList} />
+          <Route path="/detail" component={metricDetail} />
+        </Grid>
+      </Segment>
+    </div>
   );
 }
 
