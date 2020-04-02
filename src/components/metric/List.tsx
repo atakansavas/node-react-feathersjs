@@ -10,17 +10,16 @@ type Iprops = {
 
 export default (props: Iprops) => {
 
-
-    const listItems = props.MetricList.map((metric) =>
-        <ListElem Metric={metric}></ListElem>
-    );
-
     return (
         <React.Fragment>
             <Header as='h4'>Results</Header>
 
             <List animated divided verticalAlign='middle'>
-                {listItems}
+                {
+                    props.MetricList.map((metric) =>
+                        <ListElem Metric={metric}></ListElem>
+                    )
+                }
             </List>
         </React.Fragment>
     )

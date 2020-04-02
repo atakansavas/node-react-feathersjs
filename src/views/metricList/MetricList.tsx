@@ -1,8 +1,8 @@
-import React from 'react';
-import ListElem from '../../components/metric/ListElem';
-import { Header, Container, Divider, Button, Image, List } from 'semantic-ui-react';
+import React, { useState, FormEvent } from 'react';
+import { Header, Container, Divider, Form, Segment, Dimmer, Loader } from 'semantic-ui-react';
 import MetricList from '../../components/metric/List';
 import Metric from '../../models/Metric.model'
+import { ApiService } from '../../services/ApiService';
 
 type Iprops = {
 
@@ -72,16 +72,50 @@ export default (props: Iprops) => {
         }
     ]
 
-    console.log(data);
+    const apiList = ApiService.ApiList().map(api => {
+        return { key: api.apiId, text: api.apiName, value: api.apiId }
+    });
+
+    const [isLoading, setLoading] = useState(false);
+    const [value, setValue] = useState("sm");
+    const [apiId, setApiId] = useState(0);
+
+    // function handleSubmit(event : any) {
+
+    // }
+
+    function handleSubmit(e: FormEvent) {
+        console.log(e.target);
+        console.log(e.currentTarget);
+    }
 
     return (
         <React.Fragment>
             <Header as='h2' content='Metric List' textAlign='center' />
             <Container>
+                <Form loading={isLoading} onSubmit={handleSubmit}>
+                    <Form.Group widths='2'>
+                        <Form.Select
+                            fluid
+                            label='Apis'
+                            options={apiList}
+                            onChange={e => setApiId(e.currentTarget.nodeValue)}
+                            placeholder='Api List'
+                        />
+                    </Form.Group>
+
+                    <Form.Button>Search</Form.Button>
+                </Form>
+
 
                 <Divider />
-                <MetricList MetricList={data}></MetricList>
+                <div>
+                    <Segment>
+                        <Loader active inline='centered' />
 
+                        <MetricList MetricList={data}></MetricList>
+                    </Segment>
+                </div>
             </Container>
         </React.Fragment>
     )
