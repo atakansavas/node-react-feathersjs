@@ -80,10 +80,6 @@ export default (props: Iprops) => {
     const [value, setValue] = useState("sm");
     const [apiId, setApiId] = useState(0);
 
-    // function handleSubmit(event : any) {
-
-    // }
-
     function handleSubmit(e: FormEvent) {
         console.log(e.target);
         console.log(e.currentTarget);
@@ -99,7 +95,7 @@ export default (props: Iprops) => {
                             fluid
                             label='Apis'
                             options={apiList}
-                            onChange={e => setApiId(e.currentTarget.nodeValue)}
+                            onChange={e => setApiId(e.currentTarget.TEXT_NODE)}
                             placeholder='Api List'
                         />
                     </Form.Group>

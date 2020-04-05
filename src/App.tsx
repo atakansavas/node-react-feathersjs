@@ -1,6 +1,6 @@
 import React from 'react';
 import { Route } from 'react-router-dom';
-import { Segment, Grid, Divider } from 'semantic-ui-react';
+import { Segment, Grid } from 'semantic-ui-react';
 import metricList from './views/metricList/MetricList';
 import metricDetail from './views/metricDetail/metricDetail';
 import Header from './components/header/Header';
@@ -9,7 +9,7 @@ import Header from './components/header/Header';
 function App() {
   return (
     <div>
-      <Header></Header>
+      <Header />
 
       <Segment style={{ padding: '8em 0em' }} vertical>
         <Grid container stackable verticalAlign='middle'>
